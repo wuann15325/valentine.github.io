@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Who are we inviting?</title>
+  <link rel="stylesheet" href="css/date.css" />
+  <link rel="stylesheet" href="css/recipient.css" />
+</head>
+<body>
+  <h1>Enter your email address</h1>
+  <form id="emailForm" class="form-group">
+    <input
+      type="email"
+      id="recipientEmail"
+      name="recipientEmail"
+      placeholder="yoursemail@gmail.com"
+      required
+    />
+    <button class="button" type="submit">Send Invitation</button>
+  </form>
+
+  <button class="button" onclick="location.href='lastpage.html'">
+    Continue
+  </button>
+
+  <script>
+    document.getElementById('emailForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const recipient = document.getElementById('recipientEmail').value;
+      const subj = encodeURIComponent(localStorage.getItem('mailSubject') || '');
+      const body = encodeURIComponent(localStorage.getItem('mailBody') || '');
+      window.location.href = `mailto:${encodeURIComponent(recipient)}?subject=${subj}&body=${body}`;
+    });
+  </script>
+</body>
+</html>

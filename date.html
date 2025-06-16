@@ -7,15 +7,51 @@
     <link rel="stylesheet" href="css/date.css" />
   </head>
   <body>
-    <h1 title="choose a date">Are you free on ...</h1>
+    <h1 title="choose a time">Which time are you free on Wednesday?</h1>
     <form class="form-group">
-      <label>Which day: (select a date)</label>
-      <div>
-        <input type="date" />
-        <button class="button" type="submit" formaction="food.html">
+      <input type="hidden" name="date" value="2025-06-18" />
+
+      <label>Press 1 and 2 to choose between AM and PM</label>
+      <div class="time-inputs">
+        <label for="startTime">
+          Start time
+          <input
+            id="startTime"
+            type="time"
+            name="startTime"
+            min="00:00"
+            max="23:59"
+            step="60"
+            required
+          />
+        </label>
+        <label for="endTime">
+          End time
+          <input
+            id="endTime"
+            type="time"
+            name="endTime"
+            min="00:00"
+            max="23:59"
+            step="60"
+            required
+          />
+        </label>
+
+        <button class="button" type="submit" formaction="activities.html">
           Submit
         </button>
       </div>
     </form>
+    <script>
+    document.getElementById('dateSubmit').addEventListener('click', () => {
+      // grab values
+      localStorage.setItem('date', document.querySelector('input[name="date"]').value);
+      localStorage.setItem('startTime', document.getElementById('startTime').value);
+      localStorage.setItem('endTime', document.getElementById('endTime').value);
+      // navigate
+      window.location.href = 'activities.html';
+    });
+  </script>
   </body>
 </html>

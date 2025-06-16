@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="css/activities.css" />
   </head>
   <body>
-    <div id="activityquestion"><b>What are we doing after?</b></div>
+    <div id="activityquestion"><b>What are we doing?</b></div>
     <div class="activities-selection">
       <div class="activity-item">
-        <img src="activities/aquarium.jpeg" alt="aquarium" />
+        <img src="activities/cakemaking.jpg" alt="cakemaking" />
         <label
           ><input
             type="checkbox"
             name="activities"
-            value="aquarium"
-          />aquarium</label
+            value="cakemaking"
+          />cake making</label
         >
       </div>
       <div class="activity-item">
@@ -40,7 +40,7 @@
         >
       </div>
       <div class="activity-item">
-        <img src="activities/keramika.jpeg" alt="ceramics" />
+        <img src="activities/ceramicws.jpg" alt="ceramics" />
         <label
           ><input
             type="checkbox"
@@ -50,28 +50,64 @@
         >
       </div>
       <div class="activity-item">
-        <img src="activities/kunsthalle.jpeg" alt="kunsthalle" />
+        <img src="activities/vangoghexhibition.jpg" alt="exhibition" />
         <label
           ><input
             type="checkbox"
             name="activities"
-            value="kunsthalle"
-          />exhibition</label
+            value="vangoghexhibition"
+          />Van Gogh exhibition</label
         >
       </div>
       <div class="activity-item">
-        <img src="activities/park.jpeg" alt="park.jpeg" />
+        <img src="activities/coffee.jpg" alt="coffee" />
         <label
           ><input
             type="checkbox"
             name="activities"
-            value="park.jpeg"
-          />park</label
+            value="coffee"
+          />coffee with cake</label
+        >
+      </div>
+      <div class="activity-item">
+        <img src="activities/coloringplaster.jpg" alt="coloring plaster" />
+        <label
+          ><input
+            type="checkbox"
+            name="activities"
+            value="coloringplaster"
+          />coloring plaster</label
         >
       </div>
     </div>
-    <button class="button" onclick="location.href='lastpage.html'">
-      Last page
+    <button id="continue" class="button" type="button">
+      Continue
     </button>
+
+    <script>
+    document.getElementById('continue').addEventListener('click', () => {
+      const date = localStorage.getItem('date') || 'this coming Wednesday';
+      const start = localStorage.getItem('startTime') || '';
+      const end   = localStorage.getItem('endTime')   || '';
+      const activities = Array.from(
+        document.querySelectorAll('input[name="activities"]:checked')
+      ).map(i => i.nextSibling.textContent.trim()).join(', ');
+
+      const subject = 'A Gentle Invitation';
+      const body = 
+`Dear gorgeous,
+
+I hope you’re doing well. I would be delighted if you would join me on Wednesday from ${start} to ${end} enjoying ${activities}.
+
+Looking forward to your company.
+
+Warm regards,
+Khiem`;
+
+      localStorage.setItem('mailSubject', subject);
+      localStorage.setItem('mailBody', body);
+      window.location.href = 'recipient.html';
+    });
+  </script>
   </body>
 </html>

@@ -1,0 +1,18 @@
+.button {
+  padding: 6px 12px;     /* less horizontal padding */
+  font-size: 14px;       /* slightly smaller text */
+  max-width: 140px;      /* cap width */
+  width: auto;           /* shrink to fit */
+  display: block;
+  margin: 1rem auto;   /* vertical space + auto horizontal centering */
+}
+/* make the email input box shorter and centered */
+#recipientEmail {
+  width: 250px;        /* desired fixed width */
+  max-width: 90%;      /* responsive on small screens */
+  display: block;      
+  margin: 0 auto 1rem; /* center + space below */
+  padding: 8px 12px;   
+  font-size: 16px;     
+  box-sizing: border-box;
+}

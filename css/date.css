@@ -46,7 +46,7 @@ form .header {
   border: 2px solid #ff9494;
 }
 
-input[type="date"] {
+input[type="time"] {
   padding: 6px 10px;
   font-size: 15px;
   cursor: pointer;
